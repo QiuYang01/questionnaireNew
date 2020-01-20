@@ -1,6 +1,6 @@
 <template>
     
-<el-container>
+<el-container style="margin-top:8%">
   <el-header style="font-size:30px;color:#409EFF;font-family:楷体">问卷调查后台管理系统</el-header>
   <el-container>
     <el-aside width="35%"></el-aside>
@@ -9,8 +9,8 @@
         <div style="margin: 15%;"></div>
          <el-input type="password" autosize placeholder="请输入密码"  v-model="password"></el-input>
          <div style="margin: 15%;"></div>
-         <el-button style="width: 30%;font-size:20px"  type="primary" @click='submit' >登  录</el-button>
-         &#12288;&#12288;&#12288;&#12288;
+         <el-button style="width: 20%;font-size:20px"  type="primary" @click='submit' >登  录</el-button>
+         &#12288;&#12288;
          <router-link to='register'><el-button type="text" size="mini" >去注册</el-button></router-link>
     </el-main>
     <el-aside width="35%"></el-aside>
@@ -31,8 +31,15 @@ export default {
                   {params : {user_id:this.id , user_password:this.password}}) 
         .then((response)=> {
         console.log(response);
-         this.$store.dispatch('setUserIdFun',this.id); //保存用户的id
-        this.$router.push({ path: '/homepage' });
+        if(response.data.status == 0){
+           this.$store.dispatch('setUserIdFun',this.id); //保存用户的id，后面有用
+           	sessionStorage.setItem('setUserId',this.id) //保存用户的id，用户判断是否登录
+           this.$router.push({ path: '/homepage' });
+        }
+        else{
+          this.$message(response.data.msg);
+        }
+       
         })
         .catch(function (error) {
         console.log(error);

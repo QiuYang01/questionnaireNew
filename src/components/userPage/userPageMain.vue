@@ -34,18 +34,9 @@ export default {
         return {
            wenjuanid:'0',
           drawer: false,  //控制drawer是否显示
-          allinfo:[{
-              name:'wenjuan1',
-              time:'1',
-              id:'1',
-              user:'1',
-          },
-          {
-              name:'wenjuan2',
-              time:'2',
-              id:'2',
-              user:'2',
-          },]  
+          allinfo:[
+              
+          ]  
         }
     },
     methods:{
@@ -64,15 +55,34 @@ export default {
         }  
       }
     },
-    created(){  //获取数据
-
+    created(){  //获取数据  
+        this.axios.get('http://127.0.0.1:8888/questionnaire/allquestionnaire')
+          .then((response)=> {
+        console.log(response.data.message.length);
+        // this.allinfo = response.data.message;
+        for(var i=0; i<response.data.message.length; i++){
+            console.log(response.data.message[i]);
+            this.allinfo.push( { name:' ',
+              time:' ',
+              id:' ',
+              user:' '})
+            this.allinfo[i].name = response.data.message[i].questionnaire_name;
+            this.allinfo[i].time = response.data.message[i].questionnaire_date;
+            this.allinfo[i].id = response.data.message[i].questionnaire_id;
+            this.allinfo[i].user = response.data.message[i].userid;
+        }
+            
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
     }
 }
 </script>
 <style  scoped>
 .name,
 .id{
-    width: 75%;
+    width: 70%;
     float: left;
     padding-bottom: 18px;
      overflow: hidden;  /* //超出文字省略号 */
@@ -81,7 +91,7 @@ export default {
 }
 .time,
 .user{
-    width: 25%;
+    width: 30%;
     float: right;
      padding-bottom: 18px;
      overflow: hidden;

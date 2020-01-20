@@ -9,7 +9,7 @@
     :prop="'questionAndOptions.' + index + '.questinContext'"
     :rules="{required: true, message: '还有未填', trigger: 'blur'}">
     <!-- 题目不能为空，选项可以为空 -->
-   <el-input   placeholder="请输入题目" v-model="questionAndOption.questinContext"><template slot="prepend">题目{{index}}</template></el-input>
+   <el-input   placeholder="请输入题目" v-model="questionAndOption.questinContext"><template slot="prepend">题目{{index+1}}</template></el-input>
    <el-input  placeholder="请输入选项A" v-model="questionAndOption.option1"><template slot="prepend">A</template></el-input>
    <el-input placeholder="请输入选项B" v-model="questionAndOption.option2"><template slot="prepend">B</template></el-input>
    <el-input placeholder="请输入选项C" v-model="questionAndOption.option3"><template slot="prepend">C</template></el-input>

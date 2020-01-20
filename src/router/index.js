@@ -8,10 +8,12 @@ import publish from '@/components/questionManage/publishQuestionnaire'
 import myquestionnaire from '@/components/questionManage/myquestionnaire'
 import answer from '@/components/userPage/answer'
 import userPageMain from '@/components/userPage/userPageMain'
+import selectQuestion from '@/components/questiondata/selectQuestion'
 
 Vue.use(Router)
 
 export default new Router({
+  mode:'history', //去除地址栏的#，#为特殊字符，在很多场合不满足
   routes: [
     {
       path: '/',
@@ -38,6 +40,10 @@ export default new Router({
         {
           path:'myquestionnaire',
           component:myquestionnaire
+        },
+        {
+          path:'questiondata',
+          component:selectQuestion
         }
       ]
     }

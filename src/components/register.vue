@@ -1,13 +1,13 @@
 <template>
 <div>
-    <el-container>
-        <el-header style="color:#409EFF;">
+    <el-container style="margin-top:8%;margin-bottom: 30px;">
+        <el-header style="color:#409EFF;font-size:26px;">
             注册为管理员
         </el-header>
     </el-container>
     <el-row>
-    <el-col :span="7"><div ><br/></div></el-col>
-    <el-col :span="10">
+    <el-col :span="8"><div ><br/></div></el-col>
+    <el-col :span="8">
         <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="账号" prop="id">
             <el-input v-model.number="ruleForm.id" ref="id"></el-input>
@@ -25,7 +25,7 @@
         </el-form-item>
         </el-form>
     </el-col>
-    <el-col :span="7"><br/></el-col>
+    <el-col :span="8"><br/></el-col>
     </el-row>
 
 </div>
@@ -99,9 +99,9 @@
             console.log( "密码"+this.$refs.password.value)
         //  var params = new URLSearchParams();
         //   params.append('name',this.$refs.id.value);
-           console.log(this.qs.stringify({user_id:this.$refs.id.value,user_password:this.$refs.id.value}))
+           console.log(this.qs.stringify({user_id:this.$refs.id.value,user_password:this.$refs.password.value}))
            this.axios.post('http://127.0.0.1:8888/user/register', 
-                            this.qs.stringify({user_id:this.$refs.id.value , use_password:this.$refs.password.value}))
+                            this.qs.stringify({user_id:this.$refs.id.value , user_password:this.$refs.password.value}))
             .then( (response) => {
               console.log(response);
             })

@@ -1,6 +1,5 @@
 <template>
      <div class="block">
-    <!-- <span class="demonstration">Click 指示器触发</span> -->
     <el-carousel height="350px" ref="carousel" :autoplay="false" type="card" trigger="click"  indicator-position="outside" arrow="never">
       <el-carousel-item v-for="item in dynamicValidateForm.questionAndOptions" :key="item.keys" >
         <h3 class="small">{{ item.questinContext }}</h3>
@@ -25,8 +24,9 @@
     <el-button  type="primary" @click="next">下一题</el-button>
     </div>
     <div style="margin-top:20px">
-        <el-button v-show="(this.position+1)%this.dynamicValidateForm.questionAndOptions.length===0" style="width:10%" type="danger" round @click="submit">提 交</el-button>
-   
+      <transition name="my">
+        <el-button v-show="(this.position+1)%this.dynamicValidateForm.questionAndOptions.length===0"  type="danger" round @click="submit">提 交</el-button>
+      </transition>
     </div>
   </div>
 </template>
@@ -39,21 +39,22 @@ export default {
       user_ip:'',
       answers:[], //答案
        dynamicValidateForm: {
+          name: '问卷名',
           questionAndOptions: [{ 
-            questinContext: 'wenti1', 
-            option1: '1111111111111111111111', 
-            option2: '1',
-            option3: '1',
-            option4: '1',
+            questinContext: '题目一', 
+            option1: '选项1', 
+            option2: '选项2',
+            option3: '选项3',
+            option4: '选项4',
             keys:''
           },
           { 
-            questinContext: 'wenti2',
-            option1: '2', 
-            option2: '2',
-            option3: '2',
-            option4: '2',
-            key:''
+            questinContext: '题目2', 
+            option1: '选项1', 
+            option2: '选项2',
+            option3: '选项3',
+            option4: '选项4',
+            keys:''
           },
           { 
             questinContext: 'wenti3',
@@ -70,7 +71,7 @@ export default {
             option4: '4',
             key:''
           },],
-          name: '',
+         
           time:''
         }
     }
@@ -94,7 +95,7 @@ export default {
       if(this.answers.length===this.dynamicValidateForm.questionAndOptions.length)
       {
         console.log("chenggong");
-        console.log(this.answers)
+        console.log("答案为"+this.answers)
       }
       
       else
@@ -122,4 +123,16 @@ export default {
   .el-carousel__item:nth-child(2n+1) {
      background-color: #d3dce6;
   }
+  /* 按钮动画 */
+  .my-enter,
+	.my-leave-to {
+				opacity: 0;
+				transform: translateY(150px);
+				/*transform: translate(20px,20px);*/
+			}
+  .my-enter-active,
+	.my-leave-active {
+				transition: all 1.5s;
+				/* position: absolute; */
+			}
 </style>

@@ -17,6 +17,9 @@ Vue.prototype.axios = axios
 import QS from 'qs'
 Vue.prototype.qs = QS;
 
+import echarts from 'echarts' //引入echarts
+Vue.prototype.$echarts = echarts //引入组件
+
 
 /* eslint-disable no-new */
 new Vue({

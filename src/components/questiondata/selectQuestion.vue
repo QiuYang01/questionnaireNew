@@ -40,15 +40,6 @@ export default {
                            ],
                     titleText:'题目一题目一题目一题目一题目一题目一',
                 },
-                {
-                    options:[
-                            {value:335, name:'选项1'},
-                            {value:310, name:'选项2'},
-                            {value:234, name:'选项3'},
-                            {value:135, name:'选项4'}
-                           ],
-                    titleText:'题目2',
-                },
                  {
                     options:[
                            {value:335, name:'选项1'},
@@ -73,7 +64,7 @@ export default {
       }
     },
     created(){  //获取数据  
-        this.axios.get('http://127.0.0.1:8888/questionnaire/allquestionnaire')
+        this.axios.get('http://127.0.0.1:8888/questionnaire/myquestionnaire', {params : {id:sessionStorage.getItem("setUserId")}})
           .then((response)=> {
         console.log(response.data.message.length);
         // this.allinfo = response.data.message;

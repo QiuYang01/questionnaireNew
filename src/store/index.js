@@ -8,12 +8,12 @@ const store = new Vuex.Store({
     state: {
       userId: ''
     },
-    mutations: {
+    mutations: {  //必须是同步的，不能发请求
       setUserId (state,id) {
         state.userId = id
       }
     },
-    actions: {
+    actions: {  //可以执行异步请求
       setUserIdFun(context,id){
             context.commit('setUserId',id)
         }

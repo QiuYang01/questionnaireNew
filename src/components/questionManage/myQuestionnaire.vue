@@ -36,7 +36,7 @@ export default {
           .then((response)=> {
        // console.log(response.data.message.length);
         // this.allinfo = response.data.message;
-        for(var i=0; i<response.data.message.length; i++){
+        for(let i=0; i<response.data.message.length; i++){
            // console.log(response.data.message[i]);
             this.allinfo.push( { name:' ',
               time:' ',

@@ -21,8 +21,9 @@
         </template>
           <el-menu-item index="/homepage/myquestionnaire" style="min-width: auto;">我的问卷</el-menu-item>
           <el-menu-item index="/homepage/publish" style="min-width: auto;">发布问卷</el-menu-item>
+          
+          <el-menu-item index="/homepage/deleteQuestion" style="min-width: auto;">删除问卷</el-menu-item>
            <el-menu-item index="#" style="min-width: auto;">修改问卷</el-menu-item>
-          <el-menu-item index="#" style="min-width: auto;">删除问卷</el-menu-item>
       </el-submenu>
  <el-submenu index="2">
         <template slot="title">

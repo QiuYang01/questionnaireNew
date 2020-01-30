@@ -9,6 +9,7 @@ import myquestionnaire from '@/components/questionManage/myquestionnaire'
 import answer from '@/components/userPage/answer'
 import userPageMain from '@/components/userPage/userPageMain'
 import selectQuestion from '@/components/questiondata/selectQuestion'
+import deleteQuestion from '@/components/questionManage/deleteQuestion'
 
 Vue.use(Router)
 
@@ -44,7 +45,11 @@ export default new Router({
         {
           path:'questiondata',
           component:selectQuestion
-        }
+        },
+        {
+          path:'deleteQuestion',
+          component:deleteQuestion
+        },
       ]
     }
   ]
